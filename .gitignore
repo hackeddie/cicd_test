@@ -3,6 +3,6 @@ __pycache__/
 *.joblib
 drug200.csv
 train_pytorch.py
-cicd_test_key.pem
+*.pem
 .ipynb_checkpoints/
 .DS_Store
