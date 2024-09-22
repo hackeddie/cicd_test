@@ -35,11 +35,10 @@ pipeline {
                 }
             }
         }
-    }
 
     post {
         always {
-            cleanWs()
+            sh 'docker logout'
         }
     }
 }
