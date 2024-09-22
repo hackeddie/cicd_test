@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/your-github-username/ml_classification_project.git'
+                git 'https://github.com/hackeddie/cicd_test.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build('your-docker-username/ml_classification_project')
+                    sh 'docker build -t ml_classification_project:latest .'
                 }
             }
         }
@@ -19,8 +19,7 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 script {
-                    dockerImage.inside {
-                        sh 'pytest'
+                    sh 'docker run ml_classification_project python -m pytest'
                     }
                 }
             }
@@ -29,8 +28,9 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
-                        dockerImage.push("latest")
+                    withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_CREDS}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                        sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin docker.io"
+                        sh 'docker push $DOCKER_BFLASK_IMAGE'
                     }
                 }
             }
