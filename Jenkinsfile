@@ -11,7 +11,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t ml_classification_project:latest .'
+                    // sh 'docker build -t ml_classification_project:latest .'
+                    docker.build('ml_classification_project:latest')
                 }
             }
         }
