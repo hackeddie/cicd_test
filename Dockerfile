@@ -3,7 +3,7 @@
 FROM continuumio/miniconda3
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /src
 
 # Copy the environment file and create the environment
 COPY environment.yml .
@@ -13,7 +13,7 @@ RUN conda env create -f environment.yml
 RUN echo "source activate ml_classification_project" > ~/.bashrc
 
 # Copy the app code into the container
-COPY . .
+COPY data/ src/ tests/ .
 
 # Train the model when building the image
 RUN python src/train_sklearn.py
