@@ -21,7 +21,7 @@ ADD src/ src
 ADD tests/ tests
 
 # Train the model when building the image
-RUN python src/train_sklearn.py
+RUN python3 /src/src/train_sklearn.py
 
 # Set the entry point to run pytest
 # CMD ["conda", "run", "-n", "ml_classification_project", "pytest"]
