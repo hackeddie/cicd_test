@@ -6,6 +6,8 @@ from joblib import dump
 
 
 def train_model(data_path="data/iris.csv", model_output_path="models/sklearn_model.joblib"):
+    import os
+    print(os.getcwd())
     # Load dataset
     data = pd.read_csv(data_path)
     X_train, X_test, y_train, y_test = train_test_split(data.drop(columns=["Id", "Species"]), data["Species"], test_size=0.2)
