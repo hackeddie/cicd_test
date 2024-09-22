@@ -3,7 +3,7 @@ FROM python:3.9-slim
 # FROM continuumio/miniconda3
 
 # Set the working directory
-WORKDIR /src
+WORKDIR /mlproject
 
 # Copy the environment file and create the environment
 COPY requirements.txt .
@@ -21,7 +21,7 @@ ADD src/ src
 ADD tests/ tests
 
 # Train the model when building the image
-RUN python3 /src/src/train_sklearn.py
+RUN python3 src/train_sklearn.py
 
 # Set the entry point to run pytest
 # CMD ["conda", "run", "-n", "ml_classification_project", "pytest"]
