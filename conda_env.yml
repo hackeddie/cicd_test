@@ -1,0 +1,11 @@
+name: ml_classification_project
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - scikit-learn
+  - pandas
+  - joblib
+  - pytest
+  - pip

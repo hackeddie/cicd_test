@@ -1,0 +1,8 @@
+*.pyc
+__pycache__/
+*.joblib
+drug200.csv
+train_pytorch.py
+cicd_test_key.pem
+.ipynb_checkpoints/
+.DS_Store
