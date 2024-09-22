@@ -6,8 +6,8 @@ FROM continuumio/miniconda3
 WORKDIR /src
 
 # Copy the environment file and create the environment
-COPY environment.yml .
-RUN conda env create -f environment.yml
+COPY conda_env.yml .
+RUN conda env create -f conda_env.yml
 
 # Activate the environment
 RUN echo "source activate ml_classification_project" > ~/.bashrc
