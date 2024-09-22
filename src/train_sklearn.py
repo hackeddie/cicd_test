@@ -13,7 +13,7 @@ def train_model(data_path="data/iris.csv", model_output_path="models/sklearn_mod
     # Model training
     model = RandomForestClassifier(n_estimators=100)
     model.fit(X_train, y_train)
-
+    
     # Log accuracy
     accuracy = model.score(X_test, y_test)
     print(f"Model accuracy: {accuracy}")
